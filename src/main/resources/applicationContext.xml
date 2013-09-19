@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+   http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+   http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+
+	<!-- Scans all annotation driven configuration of components (@Inject, @Service, @Repository -->
+	<context:component-scan base-package="nl.newnexus"/>
+
+	<!-- Detect the default validation api (JSR 303) validator, in our case Hibernate Validation -->
+	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+
+	<!-- Transactions are annotation driven (@Transactional) -->
+	<tx:annotation-driven proxy-target-class="true"/>
+
+    <context:property-placeholder location="classpath:config/config.properties,classpath:config/config.${spring.profiles.active}.properties"/>
+
+    <import resource="applicationContext-liquibase.xml"/>
+    <import resource="applicationContext-cache.xml" />
+	<import resource="applicationContext-inmemory-db.xml" />
+	<import resource="applicationContext-inmemory-jpa.xml" />
+	<import resource="applicationContext-mapping.xml" />
+	<import resource="applicationContext-repository.xml" />
+    <!--<import resource="applicationContext-web.xml" />-->
+    <import resource="applicationContext-performance-monitoring.xml"/>
+
+    <!--<beans profile="dev,tst">
+        <import resource="applicationContext-security-stub.xml" />
+    </beans>
+    <beans profile="tst2">
+	    <import resource="applicationContext-security.xml" />
+    </beans>
+    <beans profile="acc,prd">
+        <import resource="applicationContext-security.xml" />
+    </beans>-->
+  
+</beans>

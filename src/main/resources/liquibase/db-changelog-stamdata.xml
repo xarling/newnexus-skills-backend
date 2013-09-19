@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet id="insertPersonen" author="xanderarling">
+        <delete tableName="Persoon"></delete>
+        <insert tableName="Persoon">
+            <column name="id" valueNumeric="1"/>
+            <column name="version" valueNumeric="0"/>
+            <column name="voornaam" value="Xander"/>
+            <column name="achternaam" value="Arling"/>
+            <column name="createdTimestamp" valueDate="CURRENT_DATE"/>
+            <column name="updatedTimestamp" valueDate="CURRENT_DATE"/>
+        </insert>
+        <insert tableName="Persoon">
+            <column name="id" valueNumeric="2"/>
+            <column name="version" valueNumeric="0"/>
+            <column name="voornaam" value="Martin"/>
+            <column name="achternaam" value="Boer"/>
+            <column name="tussenvoegsel" value="de"/>
+            <column name="createdTimestamp" valueDate="CURRENT_DATE"/>
+            <column name="updatedTimestamp" valueDate="CURRENT_DATE"/>
+        </insert>
+
+        <insert tableName="rol">
+            <column name="id" valueNumeric="1"/>
+            <column name="version" valueNumeric="0"/>
+            <column name="rol" value="ontwikkelaar"/>
+        </insert>
+
+        <insert tableName="rol">
+            <column name="id" valueNumeric="2"/>
+            <column name="version" valueNumeric="0"/>
+            <column name="rol" value="ontwerper"/>
+        </insert>
+
+        <insert tableName="rol">
+            <column name="id" valueNumeric="3"/>
+            <column name="version" valueNumeric="0"/>
+            <column name="rol" value="project manager"/>
+        </insert>
+
+        <insert tableName="persoon_rol">
+            <column name="id" valueNumeric="1"/>
+            <column name="persoon_id" valueNumeric="1"/>
+            <column name="rol_id" valueNumeric="1"/>
+        </insert>
+
+        <insert tableName="persoon_rol">
+            <column name="id" valueNumeric="2"/>
+            <column name="persoon_id" valueNumeric="2"/>
+            <column name="rol_id" valueNumeric="1"/>
+        </insert>
+
+        <insert tableName="skill">
+            <column name="id" valueNumeric="1"/>
+            <column name="version" valueNumeric="0"/>
+            <column name="naam" value="JSF"/>
+        </insert>
+
+        <insert tableName="skill">
+            <column name="id" valueNumeric="2"/>
+            <column name="version" valueNumeric="0"/>
+            <column name="naam" value="Spring"/>
+        </insert>
+
+        <insert tableName="skill">
+            <column name="id" valueNumeric="3"/>
+            <column name="version" valueNumeric="0"/>
+            <column name="naam" value="#Net"/>
+        </insert>
+
+
+    </changeSet>
+
+</databaseChangeLog>

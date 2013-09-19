@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet author="xanderarling" id="persoon">
+        <createTable tableName="persoon">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="createdTimestamp" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updatedTimestamp" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="voornaam" type="VARCHAR(255)"/>
+            <column name="achternaam" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="telefoonnummer" type="VARCHAR(255)"/>
+            <column name="titel" type="VARCHAR(255)"/>
+            <column name="tussenvoegsel" type="VARCHAR(255)"/>
+            <column name="geboorteDatum" type="DATE"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="xanderarling" id="rol">
+        <createTable tableName="rol">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="rol" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+    </changeSet>
+
+    <changeSet author="xanderarling" id="persoon_rol">
+        <createTable tableName="persoon_rol">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+
+            <column name="persoon_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="rol_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+
+
+        </createTable>
+    </changeSet>
+
+    <changeSet author="xanderarling" id="persoon_skill">
+        <createTable tableName="persoon_skill">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+
+            <column name="persoon_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="skill_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+
+
+        </createTable>
+    </changeSet>
+
+    <changeSet author="xanderarling" id="skill">
+        <createTable tableName="skill">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="naam" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+    </changeSet>
+
+
+</databaseChangeLog>

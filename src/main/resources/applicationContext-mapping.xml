@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+   http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<bean id="org.dozer.Mapper" class="org.dozer.DozerBeanMapper">
+		<property name="mappingFiles">
+			<list>
+				<value>dozer-global-configuration.xml</value>
+				<value>dozer-jpa-to-resource-mapping.xml</value>
+			</list>
+		 
+		</property>
+		<property name="customFieldMapper" ref="hibernateCustomFieldMapper" />
+	</bean>
+	
+	<!-- Deze custom mapper gebruiken we om Collections met fetchType LAZY niet automatisch te mappen -->
+	<bean id="hibernateCustomFieldMapper" class="nl.newnexus.skills.util.dozer.HibernateFieldMapper" />
+</beans>
+            

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<b:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:b="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+	<b:bean id="userService" class="nl.newnexus.security.service.UserService"/>
+	<b:bean id="contractService" class="nl.newnexus.security.service.ContractService"/>
+
+	<http use-expressions="true" create-session="stateless">
+		<http-basic />
+		<custom-filter ref="digestFilter" after="BASIC_AUTH_FILTER" />
+		<intercept-url pattern="/**" access="hasRole('ROLE_FAMED') or hasRole('ROLE_CUSTOMER')" />
+	</http>
+	<b:bean id="digestFilter" class="org.springframework.security.web.authentication.www.DigestAuthenticationFilter">
+		<b:property name="userDetailsService" ref="stubUserService" />
+		<b:property name="authenticationEntryPoint" ref="digestEntryPoint" />
+	</b:bean>
+
+
+	<b:bean id="digestEntryPoint" class="org.springframework.security.web.authentication.www.DigestAuthenticationEntryPoint">
+		<b:property name="realmName" value="Contacts Realm via Digest Authentication" />
+		<b:property name="key" value="security" />
+	</b:bean>
+
+	<authentication-manager>
+		<authentication-provider user-service-ref="stubUserService" />
+	</authentication-manager>
+
+	<b:bean id="stubUserService" class="nl.newnexus.security.spring.StubUserDetailsService" />
+</b:beans>

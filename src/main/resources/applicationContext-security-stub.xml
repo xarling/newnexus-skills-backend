@@ -10,7 +10,7 @@
 	<http use-expressions="true" create-session="stateless">
 		<http-basic />
 		<custom-filter ref="digestFilter" after="BASIC_AUTH_FILTER" />
-		<intercept-url pattern="/**" access="hasRole('ROLE_FAMED') or hasRole('ROLE_CUSTOMER')" />
+		<intercept-url pattern="/**" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_CUSTOMER')" />
 	</http>
 	<b:bean id="digestFilter" class="org.springframework.security.web.authentication.www.DigestAuthenticationFilter">
 		<b:property name="userDetailsService" ref="stubUserService" />

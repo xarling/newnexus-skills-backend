@@ -23,7 +23,7 @@ import javax.validation.Payload;
 @Documented
 public @interface CheckBirthdate {
 
-	String message() default "{nl.famed.constraints.valid.birthdate}";
+	String message() default "{nl.newnexus.constraints.valid.birthdate}";
 
 	Class<?>[] groups() default {};
 

@@ -8,6 +8,11 @@ import org.hibernate.collection.spi.PersistentCollection;
 import org.hibernate.proxy.HibernateProxy;
 
 /**
+ * Makes sure that Hibernate objects which are of instance HibernateProxy and are not initialized will not be touched by
+ * Dozer.
+ *
+ * The class makes sure that Dozer doesn't touch Collections which are LAZY in hibernate.
+ *
  * @author Xander Arling ($Author$)
  * @version $Revision$ $Date$
  */

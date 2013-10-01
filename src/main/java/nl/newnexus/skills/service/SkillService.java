@@ -14,7 +14,7 @@ import java.util.List;
  * Date: 9/19/13
  * Time: 19:44
  */
-@Transactional(readOnly = true)
+@Transactional
 @Service
 public class SkillService {
 
@@ -25,4 +25,14 @@ public class SkillService {
     public List<Skill> getSkills() {
         return Lists.newArrayList(skillRepository.findAll());
     }
+
+    public Skill saveSkill(final Skill skill) {
+        return skillRepository.save(skill);
+    }
+
+    public void deleteSkill(final Long skillId) {
+        skillRepository.delete(skillId);
+    }
+
+
 }

@@ -82,4 +82,11 @@ public class Persoon extends TimestampedEntity {
     public void setSkills(List<Skill> skills) {
         this.skills = skills;
     }
+
+    public void addSkill(final Skill skill) {
+        if (this.skills == null) {
+            this.skills = new ArrayList<>();
+        }
+        this.skills.add(skill);
+    }
 }

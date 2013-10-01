@@ -1,6 +1,5 @@
 package nl.newnexus.skills.webservice.rest.persoon;
 
-import nl.newnexus.skills.service.PersoonService;
 import nl.newnexus.skills.service.SkillService;
 import nl.newnexus.skills.util.dozer.DozerCollectionMapper;
 import org.dozer.Mapper;
@@ -8,9 +7,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -34,5 +31,18 @@ public class SkillWS {
     @GET
     public List<Skill> getSkills() {
         return DozerCollectionMapper.map(mapper, skillService.getSkills(), Skill.class);
+    }
+
+    @POST
+    public Skill saveSkill(final Skill skill) {
+        final nl.newnexus.skills.model.Skill savedSkill = skillService.saveSkill(mapper.map(skill, nl.newnexus.skills.model.Skill.class));
+        return mapper.map(savedSkill, Skill.class);
+    }
+
+    @DELETE
+    @Path("{skillId}")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public void deleteSkill(@PathParam("skillId") final Long skillId) {
+        skillService.deleteSkill(skillId);
     }
 }

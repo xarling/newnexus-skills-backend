@@ -96,5 +96,9 @@
         </createTable>
     </changeSet>
 
+    <changeSet author="xanderarling" id="skill_alter_naam">
+        <modifyDataType columnName="naam" tableName="skill" newDataType="VARCHAR(255)"/>
+    </changeSet>
+
 
 </databaseChangeLog>

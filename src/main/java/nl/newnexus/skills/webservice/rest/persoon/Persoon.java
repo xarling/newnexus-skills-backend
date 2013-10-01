@@ -12,6 +12,8 @@ public class Persoon {
     private String achternaam;
     private String voornaam;
 
+    private List<Skill> skills;
+
     private List<Rol> rollen;
 
     public Long getId() {
@@ -44,5 +46,13 @@ public class Persoon {
 
     public void setRollen(List<Rol> rollen) {
         this.rollen = rollen;
+    }
+
+    public List<Skill> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(List<Skill> skills) {
+        this.skills = skills;
     }
 }

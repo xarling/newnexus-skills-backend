@@ -39,6 +39,13 @@ public class SkillWS {
         return mapper.map(savedSkill, Skill.class);
     }
 
+    /**
+     * I had to do the ugly @Produces json and xml because of AngularJS. AngularJS somehow always sends
+     * Content-Type: application/xml for DELETE. So in this case we don't really need the XML marshalling, because it
+     * never happens. It's only used to trick JAX-RS to use this method anyway. The delete is done based on id, so
+     * no marshalling required
+     * @param skillId
+     */
     @DELETE
     @Path("{skillId}")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})

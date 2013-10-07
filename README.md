@@ -1,4 +1,5 @@
-Dit project is de New Nexus Skills applicatie gebruikt in de 'AngularJS' workshop
+Dit project is de New Nexus Skills applicatie gebruikt in de 'AngularJS' workshop. Het leuke is dat de applicatie nu ook in de cloud 
+staat: http://skills-codist.rhcloud.com/api/persoon.json
 
 
 # Hoe te draaien #

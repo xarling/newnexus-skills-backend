@@ -5,8 +5,8 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
 
     <changeSet id="insertPersonen" author="xanderarling">
-        <delete tableName="Persoon"></delete>
-        <insert tableName="Persoon">
+        <delete tableName="persoon"></delete>
+        <insert tableName="persoon">
             <column name="id" valueNumeric="1"/>
             <column name="version" valueNumeric="0"/>
             <column name="voornaam" value="Xander"/>
@@ -14,7 +14,7 @@
             <column name="createdTimestamp" valueDate="CURRENT_DATE"/>
             <column name="updatedTimestamp" valueDate="CURRENT_DATE"/>
         </insert>
-        <insert tableName="Persoon">
+        <insert tableName="persoon">
             <column name="id" valueNumeric="2"/>
             <column name="version" valueNumeric="0"/>
             <column name="voornaam" value="Martin"/>

@@ -100,5 +100,12 @@
         <modifyDataType columnName="naam" tableName="skill" newDataType="VARCHAR(255)"/>
     </changeSet>
 
+    <changeSet author="xanderarling" id="addunique_contraint_skillname">
+        <addUniqueConstraint
+                columnNames="naam"
+                constraintName="const_skill_naam"
+                tableName="skill"/>
+    </changeSet>
+
 
 </databaseChangeLog>

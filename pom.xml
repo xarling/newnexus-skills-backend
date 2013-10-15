@@ -246,7 +246,7 @@
         <dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>13.0</version>
+			<version>15.0</version>
 		</dependency>
 
         <dependency>
@@ -315,7 +315,14 @@
 			<scope>test</scope>
 		</dependency>
 
-	</dependencies>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.26</version>
+        </dependency>
+
+
+    </dependencies>
 
 	<build>
 		<defaultGoal>install</defaultGoal>

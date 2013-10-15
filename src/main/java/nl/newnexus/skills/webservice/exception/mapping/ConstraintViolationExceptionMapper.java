@@ -26,7 +26,7 @@ public class ConstraintViolationExceptionMapper implements ExceptionMapper<Const
 	public Response toResponse(final ConstraintViolationException exception) {
 		logger.debug("Validation exception mapped to Bad Request", exception);
 		
-		return Response.status(Response.Status.BAD_REQUEST).
+		return Response.status(Response.Status.CONFLICT).
 				  entity(exception.getMessage()).
 				  type(MediaType.APPLICATION_JSON).
 				  build();

@@ -20,6 +20,7 @@ public class TimestampedEntity extends VersionedEntity {
     @PrePersist
     protected void onCreate() {
         createdTimestamp = new Date();
+        updatedTimestamp = new Date();
     }
 
     @PreUpdate

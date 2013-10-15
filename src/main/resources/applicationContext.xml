@@ -20,12 +20,13 @@
 
     <import resource="applicationContext-liquibase.xml"/>
     <import resource="applicationContext-cache.xml" />
-	<import resource="applicationContext-inmemory-db.xml" />
+	<import resource="applicationContext-mysql.xml" />
 	<import resource="applicationContext-inmemory-jpa.xml" />
 	<import resource="applicationContext-mapping.xml" />
 	<import resource="applicationContext-repository.xml" />
     <!--<import resource="applicationContext-web.xml" />-->
     <import resource="applicationContext-performance-monitoring.xml"/>
+
 
     <!--<beans profile="dev,tst">
         <import resource="applicationContext-security-stub.xml" />

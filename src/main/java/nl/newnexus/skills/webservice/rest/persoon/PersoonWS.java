@@ -40,7 +40,7 @@ public class PersoonWS {
     }
 
     @POST
-    @Path(("{persoonId}/{skillId}"))
+    @Path(("{persoonId}/skill"))
     public Persoon addSkill(@PathParam("persoonId") Long persoonId, final Skill skill) {
         final nl.newnexus.skills.model.Persoon savedPersoon = persoonService.addSkill(persoonId, mapper.map(skill, nl.newnexus.skills.model.Skill.class));
         return mapper.map(savedPersoon, Persoon.class);
@@ -48,6 +48,7 @@ public class PersoonWS {
     }
 
     @PUT
+    @Path("{persoonId}")
     public Persoon updatePersoon(final Persoon persoon) {
         final nl.newnexus.skills.model.Persoon updatedPersoon = persoonService.update(mapper.map(persoon, nl.newnexus.skills.model.Persoon.class));
         return mapper.map(updatedPersoon, Persoon.class);

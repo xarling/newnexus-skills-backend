@@ -1,11 +1,11 @@
 package nl.newnexus.skills.model;
 
+import org.hibernate.annotations.Cascade;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * User: xanderarling
@@ -22,19 +22,19 @@ public class Persoon extends TimestampedEntity {
     @NotEmpty
     private String achternaam;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE,CascadeType.REFRESH})
     @JoinTable(
             name="persoon_rol",
             joinColumns={@JoinColumn(name="persoon_id", referencedColumnName="id")},
             inverseJoinColumns={@JoinColumn(name="rol_id", referencedColumnName="id")})
-    private List<Rol> rollen;
+    private Set<Rol> rollen;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE,CascadeType.REFRESH})
     @JoinTable(
             name="persoon_skill",
             joinColumns={@JoinColumn(name="persoon_id", referencedColumnName="id")},
             inverseJoinColumns={@JoinColumn(name="skill_id", referencedColumnName="id")})
-    private List<Skill> skills;
+    private Set<Skill> skills;
 
 
 
@@ -59,12 +59,12 @@ public class Persoon extends TimestampedEntity {
         this.achternaam = achternaam;
     }
 
-    public List<Rol> getRollen() {
+    public Set<Rol> getRollen() {
         return rollen;
     }
 
-    public void setRollen(List<Rol> rollen) {
-        this.rollen = new ArrayList<Rol>(rollen);
+    public void setRollen(Set<Rol> rollen) {
+        this.rollen = new HashSet<Rol>(rollen);
     }
 
     public String getTussenvoegsel() {
@@ -75,17 +75,17 @@ public class Persoon extends TimestampedEntity {
         this.tussenvoegsel = tussenvoegsel;
     }
 
-    public List<Skill> getSkills() {
+    public Set<Skill> getSkills() {
         return skills;
     }
 
-    public void setSkills(List<Skill> skills) {
+    public void setSkills(Set<Skill> skills) {
         this.skills = skills;
     }
 
     public void addSkill(final Skill skill) {
         if (this.skills == null) {
-            this.skills = new ArrayList<>();
+            this.skills = new HashSet<>();
         }
         this.skills.add(skill);
     }

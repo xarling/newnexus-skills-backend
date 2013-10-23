@@ -31,7 +31,7 @@ public class DozerCollectionMapper<T, E> {
      */
     public static <T, U> List<U> map(final Mapper mapper, final List<T> source, final Class<U> destType) {
 
-        final List<U> dest = new ArrayList<>();
+        final List<U> dest = new ArrayList<U>();
 
         for (T element : source) {
             dest.add(mapper.map(element, destType));

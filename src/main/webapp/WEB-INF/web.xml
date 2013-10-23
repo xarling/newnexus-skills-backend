@@ -13,7 +13,7 @@
 
     <context-param>
         <param-name>spring.profiles.active</param-name>
-        <param-value>dev</param-value>
+        <param-value>im</param-value>
     </context-param>
 
     <listener>

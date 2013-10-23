@@ -75,4 +75,11 @@
 
     </changeSet>
 
+    <changeSet id="updateDesign" author="xarling">
+        <update tableName="persoon">
+            <column name="achternaam" value="de Boer"/>
+            <where>id=2</where>
+        </update>
+    </changeSet>
+
 </databaseChangeLog>

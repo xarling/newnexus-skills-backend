@@ -85,7 +85,7 @@ public class Persoon extends TimestampedEntity {
 
     public void addSkill(final Skill skill) {
         if (this.skills == null) {
-            this.skills = new HashSet<>();
+            this.skills = new HashSet<Skill>();
         }
         this.skills.add(skill);
     }
